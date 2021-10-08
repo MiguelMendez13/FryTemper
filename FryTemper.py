@@ -12,7 +12,7 @@ import win32gui
 import win32con
 import win32api
 from wx.core import FNTP_DEFAULT_STYLE
-from procesosAparte import scale_bitmap,imagenIco,VerificarProcesos,TaskBarIcon
+from procesosAparte import scale_bitmap,imagenIco,VerificarProcesos,TaskBarIcon,RegresaIP
 import servidor
 path=os.path.split(__file__)[0]+"/"
 import socket
@@ -238,7 +238,7 @@ class entrada(wx.Frame):
 			self.servidor[len(self.servidor)-1].start()
 		else:
 			sock = socket.socket(socket.AF_INET, socket.SOCK_STREAM)
-			server_address = ('192.168.0.3', 10000)
+			server_address = (RegresaIP(), 10000)
 			sock.connect(server_address)
 			message = b'CerrarServer--'
 			sock.send(message)

@@ -1,19 +1,27 @@
 import socket
 import sys
 import time
+from procesosAparte import RegresaIP
 def Servidor(main):
 
 	# Create a TCP/IP socket
 	sock = socket.socket(socket.AF_INET, socket.SOCK_STREAM)
 
 	puerto=10000
-	address= str(socket.gethostbyname(socket.gethostname()))
+	#address= str(socket.gethostbyname(socket.gethostname()))
+	
+
+
+	address=RegresaIP()
+
+
+
 	server_address = (address, puerto)
 	print('starting up on {} port {}'.format(*server_address))
 	sock.bind(server_address)
 
 	# Listen for incoming connections
-	sock.listen(2)
+	sock.listen(3)
 	main.iptexto.SetLabel("IP: "+address)
 	main.puertotexto.SetLabel("Puerto: "+str(puerto))
 	while True:

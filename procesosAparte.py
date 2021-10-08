@@ -13,6 +13,12 @@ import wx.adv
 Titulopoput = 'FryShopScraper'
 TRAY_ICON = 'icon_31.gif'
 
+def RegresaIP():
+	salida4 = os.popen("ipconfig").read().split("Adaptador")
+	ipsalir=salida4[1].split("IPv4.")[1].split("\n")[0].split(": ")[1]
+	return(ipsalir)
+
+
 
 def scale_bitmap(bitmap, width, height):
 	image = wx.Bitmap.ConvertToImage(bitmap)
